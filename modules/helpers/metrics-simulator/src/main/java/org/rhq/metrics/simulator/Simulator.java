@@ -90,7 +90,7 @@ public class Simulator implements ShutdownManager {
         metricsServer.setConfiguration(plan.getMetricsServerConfiguration());
         metricsServer.setAggregationBatchSize(plan.getAggregationBatchSize());
         metricsServer.setDateTimeService(plan.getDateTimeService());
-        metricsServer.init(0, plan.getBatchSize() * plan.getNumMeasurementCollectors());
+        metricsServer.init();
     }
 
     /**
@@ -128,7 +128,7 @@ public class Simulator implements ShutdownManager {
             test.setCurrentHour(new DateTime(timestamp));
             if (currentTime.getHourOfDay() != lastAggregationHour) {
                 lastAggregationHour = currentTime.getHourOfDay();
-                test.calculateAggregates(0, numberOfMetrics);
+                test.calculateAggregates();
             }
         }
 
